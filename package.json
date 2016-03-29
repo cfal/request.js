@@ -1,0 +1,31 @@
+{
+    "name": "requestjs",
+    "version": "1.0.0",
+    "description": "A transparent caching wrapper for a subset of the request package API",
+    "author": {
+        "name": "Alex Lau"
+    },
+    "license": "MIT",
+    "keywords": [
+        "request",
+        "http-request",
+        "request-cache",
+        "request-caching",
+        "cached-request",
+        "http-cache",
+        "http-caching"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cfal/request.js"
+    },
+    "dependencies": {
+        "request": "*"
+    },
+    "devDependencies": {
+        "chai": "*",
+        "gulp": "*",
+        "gulp-coffee": "*",
+        "gulp-uglify": "*"
+    }
+}
