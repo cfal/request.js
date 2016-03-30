@@ -2,7 +2,7 @@ urllib = require 'url'
 request = require 'request'
 cache = require './cache'
 
-ENABLE_DEBUG = true
+ENABLE_DEBUG = false
 
 METHODS =
     get: 'GET'
@@ -18,6 +18,11 @@ module.exports = (defaultOpts = {}) ->
     cacheBlacklist = null
     cacheWhitelist = null
     transformRequest = null
+    requestObj = request
+
+    if defaultOpts.requestObj
+        requestObj = defaultOpts.requestObj
+        delete defaultOpts.requestObj
 
     if defaultOpts.disableCache
         # In case a user is using this module purely for transforming requests
@@ -74,7 +79,8 @@ module.exports = (defaultOpts = {}) ->
         opts = Object.assign(opts or {}, defaultOpts)
         opts.url = url
 
-        opts = transformRequest(opts) if transformRequest
+        if transformRequest
+            opts = transformRequest(opts) or opts
 
         return [opts, cb]
 
